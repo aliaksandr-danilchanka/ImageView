@@ -12,6 +12,7 @@ class Utils {
     companion object {
 
         const val BASE_URL = "https://mobility.cleverlance.com"
+        const val HTTP_ERROR_MESSAGE = "HTTP 401 Unauthorized"
 
         fun stringToSha1(input: String): String {
             var sha1 = ""
