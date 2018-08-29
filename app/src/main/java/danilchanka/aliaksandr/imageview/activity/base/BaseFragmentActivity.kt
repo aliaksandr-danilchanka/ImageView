@@ -10,7 +10,7 @@ abstract class BaseFragmentActivity : BaseActivity() {
     }
 
     fun addFragment(fragment: Fragment){
-        addFragment(fragment, true)
+        addFragment(fragment, false)
     }
 
     fun addFragment(fragment: Fragment, addToBackStack: Boolean){
