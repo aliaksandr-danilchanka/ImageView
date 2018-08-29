@@ -7,11 +7,13 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import danilchanka.aliaksandr.imageview.R
 import danilchanka.aliaksandr.imageview.databinding.FragmentImageViewBinding
+import danilchanka.aliaksandr.imageview.view.ImageViewView
 import danilchanka.aliaksandr.imageview.viewmodel.ImageViewViewModel
 
-class ImageViewFragment : Fragment() {
+class ImageViewFragment : Fragment(), ImageViewView {
 
     private lateinit var mBinding: FragmentImageViewBinding
     private lateinit var mModel: ImageViewViewModel
@@ -24,6 +26,20 @@ class ImageViewFragment : Fragment() {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_image_view, container, false)
         mModel = ViewModelProviders.of(this).get(ImageViewViewModel::class.java)
         mBinding.imageViewModel = mModel
+        mModel.attachView(this)
         return mBinding.root
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        mModel.detachView()
+    }
+
+    override fun onErrorConnection() {
+        Toast.makeText(context, R.string.internet_connection_error, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onError() {
+        Toast.makeText(context, R.string.wrong_data, Toast.LENGTH_SHORT).show()
     }
 }
