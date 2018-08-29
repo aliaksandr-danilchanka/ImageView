@@ -1,5 +1,6 @@
 package danilchanka.aliaksandr.imageview.api
 
+import danilchanka.aliaksandr.imageview.util.Utils
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -9,11 +10,23 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RestHelper {
 
     companion object Factory {
-        fun create(): RestInterface {
+
+        private var sFilmsInterface: RestInterface? = null
+
+        fun getRestInterface(): RestInterface {
+            return if (sFilmsInterface == null) {
+                sFilmsInterface = createRestInterface()
+                sFilmsInterface!!
+            } else {
+                sFilmsInterface!!
+            }
+        }
+
+        private fun createRestInterface(): RestInterface {
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("https://mobility.cleverlance.com")
+                    .baseUrl(Utils.BASE_URL)
                     .client(getOkHttpClient())
                     .build()
             return retrofit.create(RestInterface::class.java)
