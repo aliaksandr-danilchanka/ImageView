@@ -11,6 +11,8 @@ class Utils {
 
     companion object {
 
+        const val BASE_URL = "https://mobility.cleverlance.com"
+
         fun stringToSha1(input: String): String {
             var sha1 = ""
             try {
