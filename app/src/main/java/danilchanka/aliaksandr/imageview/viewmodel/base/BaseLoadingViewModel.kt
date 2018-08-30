@@ -5,7 +5,7 @@ import danilchanka.aliaksandr.imageview.view.base.BaseView
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class BaseLoadingViewModel<T: BaseView> : ViewModel(), BaseViewModel<T> {
+abstract class BaseLoadingViewModel<T : BaseView> : ViewModel(), BaseViewModel<T> {
 
     private var mListener: T? = null
     private val mCompositeDisposable = CompositeDisposable()

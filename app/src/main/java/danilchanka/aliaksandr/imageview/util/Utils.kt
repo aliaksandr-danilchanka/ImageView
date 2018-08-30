@@ -27,7 +27,7 @@ class Utils {
             return sha1
         }
 
-        fun stringBase64ToBitmap(encodedImage: String): Bitmap{
+        fun stringBase64ToBitmap(encodedImage: String): Bitmap {
             val decodedString = Base64.decode(encodedImage, Base64.DEFAULT)
             return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
         }

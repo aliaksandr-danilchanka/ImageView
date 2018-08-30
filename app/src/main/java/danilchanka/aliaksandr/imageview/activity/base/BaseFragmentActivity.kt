@@ -9,11 +9,11 @@ abstract class BaseFragmentActivity : BaseActivity() {
         const val DEFAULT_STACK = "DEFAULT_STACK"
     }
 
-    fun addFragment(fragment: Fragment){
+    fun addFragment(fragment: Fragment) {
         addFragment(fragment, false)
     }
 
-    fun addFragment(fragment: Fragment, addToBackStack: Boolean){
+    fun addFragment(fragment: Fragment, addToBackStack: Boolean) {
         val transaction = supportFragmentManager
                 .beginTransaction()
                 .add(getFragmentContainerId(), fragment)
