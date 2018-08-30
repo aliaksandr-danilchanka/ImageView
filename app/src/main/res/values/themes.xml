@@ -3,9 +3,9 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionModeOverlay">true</item>
-        <item name="colorPrimary">@color/globalColorPrimary</item>
-        <item name="colorPrimaryDark">@color/globalColorPrimaryDark</item>
-        <item name="colorAccent">@color/globalColorAccent</item>
+        <item name="colorPrimary">@color/global_color_primary</item>
+        <item name="colorPrimaryDark">@color/global_color_primary_dark</item>
+        <item name="colorAccent">@color/global_color_accent</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>

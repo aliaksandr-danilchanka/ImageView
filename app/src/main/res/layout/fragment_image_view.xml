@@ -35,8 +35,8 @@
                     android:hint="@string/login"
                     android:imeOptions="actionNext"
                     android:inputType="text"
-                    android:text="@{imageViewModel.login}"
-                    android:onTextChanged="@{(text, start, before, count) -> imageViewModel.changeLogin(text)}"/>
+                    android:onTextChanged="@{(text, start, before, count) -> imageViewModel.changeLogin(text)}"
+                    android:text="@{imageViewModel.login}"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -56,8 +56,8 @@
                     android:hint="@string/password"
                     android:imeOptions="actionDone"
                     android:inputType="textVisiblePassword"
-                    android:text="@{imageViewModel.password}"
-                    android:onTextChanged="@{(text, start, before, count) -> imageViewModel.changePassword(text)}"/>
+                    android:onTextChanged="@{(text, start, before, count) -> imageViewModel.changePassword(text)}"
+                    android:text="@{imageViewModel.password}"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -73,34 +73,34 @@
                 android:onClick="@{imageViewModel.onSubmitClick}"
                 android:text="@string/submit"/>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/shadow_bottom_height"
+                android:background="@drawable/shadow_bottom"
+                />
+
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/frame_layout_height"
+                app:hide="@{imageViewModel.isLoading}">
 
                 <ImageView
                     android:id="@+id/viewImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginBottom="@dimen/margin_between_text"
                     android:layout_marginLeft="@dimen/margin_between_elements"
                     android:layout_marginRight="@dimen/margin_between_elements"
                     android:layout_marginTop="@dimen/margin_between_text"
-                    app:bitmapImage="@{imageViewModel.imageBitmap}"
-                    app:hide="@{imageViewModel.isLoading}"
-                    android:layout_gravity="center"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/shadow_bottom_height"
-                    android:background="@drawable/shadow_bottom"
-                    />
+                    app:bitmapImage="@{imageViewModel.imageBitmap}"/>
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                app:show="@{imageViewModel.isLoading}">
+                android:layout_height="@dimen/frame_layout_height"
+                app:show="@{imageViewModel.isLoading}"
+                android:visibility="gone">
 
                 <ProgressBar
                     android:layout_width="wrap_content"

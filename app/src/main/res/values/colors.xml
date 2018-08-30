@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="globalColorPrimary">#009688</color>
-    <color name="globalColorPrimaryDark">#00796B</color>
-    <color name="globalColorAccent">#FFC107</color>
+    <color name="global_color_primary">#009688</color>
+    <color name="global_color_primary_dark">#00796B</color>
+    <color name="global_color_accent">#FFC107</color>
 
-    <color name="textPrimaryWhite">#FFFFFF</color>
+    <color name="text_primary_white">#FFFFFF</color>
 
-    <color name="viewBottomShadow">#2c000000</color>
+    <color name="view_bottom_shadow">#2c000000</color>
 
 </resources>
