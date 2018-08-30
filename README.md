@@ -1,4 +1,4 @@
-#Image View
+# Image View
 ====
 
 The app have one screen which contain the following:
@@ -8,10 +8,10 @@ The app have one screen which contain the following:
 
 Dependencies
 ============
-*Retrofit2
-*RxJava2
-*OkHttp
-*ViewModel
-*DataBinding
+* Retrofit2
+* RxJava2
+* OkHttp
+* ViewModel
+* DataBinding
 
 
