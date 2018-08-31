@@ -5,9 +5,9 @@ import danilchanka.aliaksandr.imageview.view.base.BaseView
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class BaseLoadingViewModel<T : BaseView> : ViewModel(), BaseViewModel<T> {
+abstract class BaseLoadingViewModel<V : BaseView> : ViewModel(), BaseViewModel<V> {
 
-    private var mListener: T? = null
+    private var mListener: V? = null
     private val mCompositeDisposable = CompositeDisposable()
 
     override fun onCleared() {
@@ -15,7 +15,7 @@ abstract class BaseLoadingViewModel<T : BaseView> : ViewModel(), BaseViewModel<T
         mCompositeDisposable.dispose()
     }
 
-    override fun attachView(view: T) {
+    override fun attachView(view: V) {
         mListener = view
     }
 
@@ -31,7 +31,7 @@ abstract class BaseLoadingViewModel<T : BaseView> : ViewModel(), BaseViewModel<T
         mCompositeDisposable.add(disposable)
     }
 
-    fun getListener(): T {
+    fun getListener(): V {
         return mListener!!
     }
 
