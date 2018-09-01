@@ -7,4 +7,6 @@ interface ImageViewView : BaseView {
     fun onError()
 
     fun onErrorConnection()
+
+    fun hideSoftKeyboard()
 }

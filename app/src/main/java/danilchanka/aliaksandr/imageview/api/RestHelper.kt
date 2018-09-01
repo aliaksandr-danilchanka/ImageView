@@ -11,14 +11,14 @@ class RestHelper {
 
     companion object Factory {
 
-        private var sFilmsInterface: RestInterface? = null
+        private var sRestInterface: RestInterface? = null
 
         fun getRestInterface(): RestInterface {
-            return if (sFilmsInterface == null) {
-                sFilmsInterface = createRestInterface()
-                sFilmsInterface!!
+            return if (sRestInterface == null) {
+                sRestInterface = createRestInterface()
+                sRestInterface!!
             } else {
-                sFilmsInterface!!
+                sRestInterface!!
             }
         }
 

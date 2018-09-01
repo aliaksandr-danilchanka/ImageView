@@ -10,13 +10,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import danilchanka.aliaksandr.imageview.R
 import danilchanka.aliaksandr.imageview.databinding.FragmentImageViewBinding
+import danilchanka.aliaksandr.imageview.util.Utils
 import danilchanka.aliaksandr.imageview.view.ImageViewView
 import danilchanka.aliaksandr.imageview.viewmodel.ImageViewViewModel
+import kotlinx.android.synthetic.main.fragment_image_view.*
 
 class ImageViewFragment : Fragment(), ImageViewView {
 
     private lateinit var mBinding: FragmentImageViewBinding
-    private lateinit var mModel: ImageViewViewModel
+    private lateinit var mViewModel: ImageViewViewModel
 
     companion object {
         fun newInstance(): ImageViewFragment = ImageViewFragment()
@@ -24,15 +26,15 @@ class ImageViewFragment : Fragment(), ImageViewView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_image_view, container, false)
-        mModel = ViewModelProviders.of(this).get(ImageViewViewModel::class.java)
-        mBinding.imageViewModel = mModel
-        mModel.attachView(this)
+        mViewModel = ViewModelProviders.of(this).get(ImageViewViewModel::class.java)
+        mBinding.imageViewModel = mViewModel
+        mViewModel.attachView(this)
         return mBinding.root
     }
 
     override fun onDetach() {
         super.onDetach()
-        mModel.detachView()
+        mViewModel.detachView()
     }
 
     override fun onErrorConnection() {
@@ -41,5 +43,9 @@ class ImageViewFragment : Fragment(), ImageViewView {
 
     override fun onError() {
         Toast.makeText(context, R.string.wrong_data, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun hideSoftKeyboard() {
+        Utils.hideSoftKeyboard(context!!, imageView)
     }
 }

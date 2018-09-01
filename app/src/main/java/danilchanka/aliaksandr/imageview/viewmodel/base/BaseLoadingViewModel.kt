@@ -7,7 +7,7 @@ import io.reactivex.disposables.Disposable
 
 abstract class BaseLoadingViewModel<V : BaseView> : ViewModel(), BaseViewModel<V> {
 
-    private var mListener: V? = null
+    private var mView: V? = null
     private val mCompositeDisposable = CompositeDisposable()
 
     override fun onCleared() {
@@ -16,23 +16,23 @@ abstract class BaseLoadingViewModel<V : BaseView> : ViewModel(), BaseViewModel<V
     }
 
     override fun attachView(view: V) {
-        mListener = view
+        mView = view
     }
 
     override fun detachView() {
-        mListener = null
+        mView = null
     }
 
     fun isViewAttached(): Boolean {
-        return mListener != null
+        return mView != null
     }
 
     protected fun addSubscription(disposable: Disposable) {
         mCompositeDisposable.add(disposable)
     }
 
-    fun getListener(): V {
-        return mListener!!
+    fun getView(): V {
+        return mView!!
     }
 
 }

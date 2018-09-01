@@ -10,17 +10,17 @@ import danilchanka.aliaksandr.imageview.view.ImageViewView
 import danilchanka.aliaksandr.imageview.viewmodel.base.BaseLoadingViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-
+import retrofit2.HttpException
 
 class ImageViewViewModel : BaseLoadingViewModel<ImageViewView>() {
 
-    var login: String = "danilchanka"
-    var password: String = "aliaksandr"
+    var login: String = Utils.BASE_LOGIN
+    var password: String = Utils.BASE_PASSWORD
     var isLoading = ObservableBoolean(false)
     var imageBitmap = ObservableField<Bitmap>()
 
-    var isError: Boolean = false
-    var isConnectionError: Boolean = false
+    private var isError: Boolean = false
+    private var isConnectionError: Boolean = false
 
     override fun attachView(view: ImageViewView) {
         super.attachView(view)
@@ -28,6 +28,9 @@ class ImageViewViewModel : BaseLoadingViewModel<ImageViewView>() {
     }
 
     fun onSubmitClick(view: View) {
+        if (isViewAttached()) {
+            getView().hideSoftKeyboard()
+        }
         isLoading.set(true)
         addSubscription(
                 RestHelper.getRestInterface()
@@ -38,7 +41,7 @@ class ImageViewViewModel : BaseLoadingViewModel<ImageViewView>() {
                             imageBitmap.set(Utils.stringBase64ToBitmap(result.image))
                             isLoading.set(false)
                         }) { error ->
-                            if (error.localizedMessage == Utils.HTTP_ERROR_MESSAGE) isError = true
+                            if (error is HttpException && error.code() == 401) isError = true
                             else isConnectionError = true
                             isLoading.set(false)
                             showViewErrors()
@@ -57,11 +60,11 @@ class ImageViewViewModel : BaseLoadingViewModel<ImageViewView>() {
     private fun showViewErrors() {
         if (isViewAttached()) {
             if (isError) {
-                getListener().onError()
+                getView().onError()
                 isError = false
             }
             if (isConnectionError) {
-                getListener().onErrorConnection()
+                getView().onErrorConnection()
                 isConnectionError = false
             }
         }

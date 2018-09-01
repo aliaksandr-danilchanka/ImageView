@@ -1,12 +1,11 @@
-package danilchanka.aliaksandr.imageview.fragment.binder
+package danilchanka.aliaksandr.imageview.util
 
 import android.databinding.BindingAdapter
 import android.graphics.Bitmap
 import android.view.View
 import android.widget.ImageView
 
-
-object Binder {
+object BindingAdapterUtils {
 
     @BindingAdapter("hide")
     @JvmStatic
